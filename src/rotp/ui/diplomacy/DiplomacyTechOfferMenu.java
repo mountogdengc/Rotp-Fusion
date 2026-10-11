@@ -29,6 +29,7 @@ public class DiplomacyTechOfferMenu extends DiplomacyRequestReply {
     }
     public static DiplomacyTechOfferMenu create(Empire e1, Empire requestor, DiplomaticReply r, Tech t) {
         DiplomacyTechOfferMenu msg = new DiplomacyTechOfferMenu();
+        msg.init();
         msg.requestee = e1;
         msg.requestedTech = t;
         msg.diplomat(requestor);
@@ -109,7 +110,7 @@ public class DiplomacyTechOfferMenu extends DiplomacyRequestReply {
     }
     @Override
     public void select(int i) {
-        if (!hotSeatCanAct()) return;
+        if (!hotSeatCanAcknowledge()) return;
         if (!enabled(i))
             return;
 

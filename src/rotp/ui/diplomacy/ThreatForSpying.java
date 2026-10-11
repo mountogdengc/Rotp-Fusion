@@ -46,7 +46,7 @@ public class ThreatForSpying extends TurnNotificationMessage {
     }
     @Override
     public void select(int i) {
-        if (!hotSeatCanAct()) return;
+        if (!hotSeatCanAcknowledge()) return;
         log("ThreatForSpying - selected: ", str(i));
         player().threatReplyAgainst(diplomat().id, i); // BR: Memo for the Governor!
         switch(i) {

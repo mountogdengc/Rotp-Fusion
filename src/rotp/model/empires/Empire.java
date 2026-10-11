@@ -437,7 +437,7 @@ public final class Empire extends Species implements NamedObject {
     public float minY()                           { return minY; }
     public float maxY()                           { return maxY; }
 	public boolean divertColonyExcessToResearch() {
-		if (isAIControlled())
+		if (session().controllerRegistry() != null || isAIControlled())
 			return divertColonyExcessToResearch;
 		else
 			return options().divertColonyExcessToResearch();
@@ -445,12 +445,19 @@ public final class Empire extends Species implements NamedObject {
 	public void toggleColonyExcessToResearch()    {
 		if (isAIControlled())
 			divertColonyExcessToResearch = !divertColonyExcessToResearch;
+		else if (session().controllerRegistry() != null) {
+			divertColonyExcessToResearch = !divertColonyExcessToResearch;
+			redoGovTurnDecisionsRich();
+		}
 		else {
 			options().toggleDivertColonyExcessToResearch();
 			redoGovTurnDecisionsRich();
 		}
 	}
-	public void resetDivertColonyExcessToResearch()	{ divertColonyExcessToResearch = false; }
+	public void resetDivertColonyExcessToResearch()	{
+		divertColonyExcessToResearch = session().controllerRegistry() == null
+				? false : options().divertColonyExcessToResearch();
+	}
     public void changeColorId(int newColor) {
         int oldColor = colorId();
 
@@ -607,6 +614,8 @@ public final class Empire extends Species implements NamedObject {
 		else
 			randomSource = empSrc.randomSource();
 		id = empId;
+		if (session().controllerRegistry() != null && session().controllerRegistry().isHumanControlled(empId))
+			divertColonyExcessToResearch = opts.divertColonyExcessToResearch();
 
 		// Init empire species parameters
 		raceKey		= animKey();

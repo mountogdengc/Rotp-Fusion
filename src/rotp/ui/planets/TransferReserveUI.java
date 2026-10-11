@@ -781,9 +781,9 @@ final class TransferReserveUI extends BasePanel implements MouseListener, MouseW
 			hoverBox = hoverBox(canUpdateRaiseCheckbox, hoverBox);
 		else if (redoAllGrantButton.isSelectableAt(x,y))
 			hoverBox = hoverBox(redoAllGrantButton, hoverBox);
-		else if (redoAllBudgetButton.isSelectableAt(x,y) && !options().divertColonyExcessToResearch())
+		else if (redoAllBudgetButton.isSelectableAt(x,y) && !player().divertColonyExcessToResearch())
 			hoverBox = hoverBox(redoAllBudgetButton, hoverBox);
-		else if (redoAllRaiseButton.isSelectableAt(x,y) && !options().divertColonyExcessToResearch())
+		else if (redoAllRaiseButton.isSelectableAt(x,y) && !player().divertColonyExcessToResearch())
 			hoverBox = hoverBox(redoAllRaiseButton, hoverBox);
 		else if (clearAllGrantButton.isSelectableAt(x,y))
 			hoverBox = hoverBox(clearAllGrantButton, hoverBox);
@@ -799,9 +799,9 @@ final class TransferReserveUI extends BasePanel implements MouseListener, MouseW
 			hoverBox = hoverBox(listClearRaiseButton, hoverBox);
 		else if (listGrantButton.isSelectableAt(x,y))
 			hoverBox = hoverBox(listGrantButton, hoverBox);
-		else if (listBudgetButton.isSelectableAt(x,y) && !options().divertColonyExcessToResearch())
+		else if (listBudgetButton.isSelectableAt(x,y) && !player().divertColonyExcessToResearch())
 			hoverBox = hoverBox(listBudgetButton, hoverBox);
-		else if (listRaiseButton.isSelectableAt(x,y) && !options().divertColonyExcessToResearch())
+		else if (listRaiseButton.isSelectableAt(x,y) && !player().divertColonyExcessToResearch())
 			hoverBox = hoverBox(listRaiseButton, hoverBox);
 		else
 			hoverBox = hoverBox(null, hoverBox);

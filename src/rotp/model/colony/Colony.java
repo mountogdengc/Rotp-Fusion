@@ -2278,7 +2278,7 @@ public final class Colony implements Base, IMappedObject, Serializable {
 		// Check if Rich and Ultra contribute to reserve
 		if (planet.isHighResource()) {
 			if(govOptions().isReserveFromRich()
-					&& !options().divertColonyExcessToResearch()) {
+					&& !empire.divertColonyExcessToResearch()) {
 				int research = allocation(RESEARCH);
 				allocation(RESEARCH, 0);
 				addAllocation(INDUSTRY, research);

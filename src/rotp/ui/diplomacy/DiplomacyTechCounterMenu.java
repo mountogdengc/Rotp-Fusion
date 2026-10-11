@@ -27,6 +27,7 @@ public class DiplomacyTechCounterMenu extends DiplomacyRequestReply {
     }
     public static DiplomacyTechCounterMenu create(Empire player, Empire requestor, DiplomaticReply r, Tech t) {
         DiplomacyTechCounterMenu msg = new DiplomacyTechCounterMenu();
+        msg.init();
         msg.requestedTech = t;
         msg.diplomat(requestor);
         msg.reply(r);
